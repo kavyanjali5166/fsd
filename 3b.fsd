@@ -1,89 +1,12 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-<meta charset="UTF-8"> 
-<title>All HTML Elements</title> 
-<style> 
-body { font-family: sans-serif; margin: 20px; } 
-#output { border: 1px solid #ccc; padding: 20px; background: #f0f0f0; } 
-table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; } 
-</style> 
-</head> 
-<body> 
-<h1>Render All HTML Elements</h1> 
-<button onclick="renderAll()">Render</button> 
-<div id="output"></div> 
-<script> 
-function renderAll() { 
-const html = ` 
-<header><h2>Header Section</h2></header> 
-<nav><a href="#">Home</a> | <a href="#">About</a></nav> 
-<main> 
-<section> 
-<h3>Text Elements</h3> 
-<p>This is a paragraph.</p> 
-<strong>Bold text</strong>, <em>italic text</em>, <u>underlined</u>, <mark>highlighted</mark> <br><small>Small text</small> 
-<blockquote>“This is a blockquote.”</blockquote> 
-<pre>Preformatted text\nLine 2</pre> 
-<code>console.log("Hello World");</code> 
-<hr> 
-</section> 
-<section> 
-<h3>List Elements</h3> 
-<ul><li>Unordered item</li></ul> 
-<ol><li>Ordered item</li></ol> 
-<dl> 
-<dt>HTML</dt><dd>HyperText Markup Language</dd> 
-</dl> 
-</section> 
-<section> 
-<h3>Table</h3> 
-<table> 
-<tr><th>Name</th><th>Age</th></tr> 
-<tr><td>Alice</td><td>30</td></tr>
-<tr><td>Bob</td><td>25</td></tr> 
-</table> 
-</section> 
-<section> 
-<h3>Form Elements</h3> 
-<form> 
-<label for="text">Text:</label> 
-<input type="text" id="text"><br> 
-<label for="email">Email:</label> 
-<input type="email" id="email"><br> 
-<label for="pass">Password:</label> 
-<input type="password" id="pass"><br> 
-<label for="color">Color:</label> 
-<input type="color" id="color"><br> 
-<label for="range">Range:</label> 
-<input type="range" id="range"><br> 
-<input type="checkbox" id="check"> <label for="check">Check me</label><br> <input type="radio" name="choice" checked> Option 1 
-<input type="radio" name="choice"> Option 2<br> 
-<select><option>Option A</option><option>Option B</option></select><br> <textarea rows="3" cols="30">Textarea</textarea><br> 
-<button type="submit">Submit</button> 
-</form> 
-</section> 
-<section> 
-<h3>Media Elements</h3> 
-<img src="https://via.placeholder.com/100" alt="Image"> 
-<audio controls src="https://www.w3schools.com/html/horse.mp3"></audio> <video width="200" controls> 
-<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"> Your browser does not support video. 
-</video> 
-</section> 
-<section> 
-<h3>Semantic Elements</h3> 
-<article><h4>Article Title</h4><p>Article content...</p></article> 
-<aside><p>This is an aside.</p></aside> 
-<figure> 
-<img src="https://via.placeholder.com/80" alt="Figure image"> 
-<figcaption>Figure caption</figcaption> 
-</figure> 
-<footer><p>Footer content © 2025</p></footer> 
-</section> 
-</main> 
-`; 
-document.getElementById('output').innerHTML = html; 
+just create with npx create-react-app myapp, replace App.js with the above code, and run npm start.
+// App.js 
+import React from 'react'; 
+function App() { 
+ return ( 
+ <div> 
+ <h2>Hello React!</h2> 
+ <p>This is rendered HTML.</p> 
+ </div> 
+ ); 
 } 
-</script> 
-</body> 
-</html>
+export default App; 
