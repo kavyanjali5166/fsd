@@ -1,45 +1,38 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-
-// Set EJS as the templating engine
-app.set('view engine', 'ejs');
-
-// Set views folder path
-app.set('views', path.join(__dirname, 'views'));
-
-// Routes
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Home Page', message: 'Welcome to EJS Templating!' });
+JavaScript 
+const express = require('express'); 
+const app = express(); 
+const port = 3000; 
+// 1. Use the middleware for URL-encoded form data 
+app.use(express.urlencoded({ extended: true })); 
+// 2. Serve the HTML form 
+app.get('/', (req, res) => { 
+res.send(` 
+<h1>Simple HTML Form</h1> 
+<form action="/submit" method="POST"> 
+<div> 
+<label for="name">Name:</label> 
+<input id="name" name="username"> 
+</div> 
+<div> 
+<label for="email">Email:</label> 
+<input id="email" name="user_email"> 
+</div> 
+<button type="submit">Submit Form</button> 
+</form> 
+`); 
+}); 
+// 3. Handle the form submission 
+app.post('/submit', (req, res) => { 
+// 4. The middleware puts the form data in req.body 
+const name = req.body.username; 
+const email = req.body.user_email; 
+res.send(` 
+<h1>Submission Received!</h1> 
+<p>Thank you, ${name}.</p> 
+<p>We received your email: ${email}</p> 
+`); 
+}); 
+app.listen(port, () => { 
+console.log(`Server running at http://localhost:${port}`); 
 });
 
-app.get('/about', (req, res) => {
-    res.render('about', { title: 'About Us', description: 'This is the about page rendered using EJS.' });
-});
-
-
-app.listen(3000, () => {
-    console.log('Server running on http://localhost:3000');
-});
-//index.ejs
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%= title %></title>
-</head>
-<body>
-    <h1><%= message %></h1>
-    <p><a href="/about">Go to About Page</a></p>
-</body>
-</html>
-//about.ejs
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%= title %></title>
-</head>
-<body>
-    <h1><%= description %></h1>
-    <p><a href="/">Back to Home</a></p>
-</body>
-</html>
