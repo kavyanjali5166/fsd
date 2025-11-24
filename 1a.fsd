@@ -1,0 +1,22 @@
+const express = require('express'); 
+const app = express(); 
+const port = 3000; 
+// 1. Basic Route 
+app.get('/', (req, res) => { 
+res.send('Hello! This is the homepage.'); 
+}); 
+// 2. Route with Parameters 
+// Try visiting: http://localhost:3000/user/123 
+app.get('/user/:id', (req, res) => { 
+const userId = req.params.id; 
+res.send(`You are viewing the profile for User ID: ${userId}`); 
+}); 
+// 3. Route with Query Parameters 
+// Try visiting: http://localhost:3000/search?q=react&lang=js 
+app.get('/search', (req, res) => { 
+const searchQuery = req.query.q; 
+const langQuery = req.query.lang; 
+res.send(`You searched for: "${searchQuery}" in language: "${langQuery}"`); });
+app.listen(port, () => { 
+console.log(`Server running at http://localhost:${port}`); 
+}); 
