@@ -1,0 +1,33 @@
+File: app.js
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware function
+const logger = (req, res, next) => {
+  console.log(`${req.method} request for '${req.url}'`);
+  next(); // Pass control to the next middleware/route
+};
+
+// Use middleware for all routes
+app.use(logger);
+
+// Route 1
+app.get('/', (req, res) => {
+  res.send('Hello! This is the homepage.');
+});
+
+// Route 2
+app.get('/about', (req, res) => {
+  res.send('This is the about page.');
+});
+
+// Route 3
+app.get('/contact', (req, res) => {
+  res.send('Contact us at contact@example.com');
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
